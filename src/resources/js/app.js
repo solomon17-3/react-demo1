@@ -14,14 +14,17 @@ require('./bootstrap');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route ,Routes} from "react-router-dom";
 import About from "./About";
 import Example from "./components/Example";
 
 const App = () => {
     return (
         <BrowserRouter>
-            <Route path="about" element={<About />} />
+            <Routes>
+                <Route path="/" element={<Example />} />
+                <Route path="/about" element={<About />} />
+            </Routes>
         </BrowserRouter>
     );
   };
