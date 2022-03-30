@@ -20,9 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-    # id="app"の中身を空する変更
-    </div>
+    <div id="app"></div>
 </body>
 </html>
 
