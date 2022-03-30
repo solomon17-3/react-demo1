@@ -15,15 +15,19 @@ require('./bootstrap');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route ,Routes} from "react-router-dom";
-import About from "./About";
-import Example from "./components/Example";
+import About from "./pages/About";
+import Example from "./pages/Example";
+import NotFound from './pages/NotFound';
+import Home from './pages/Home';
 
 const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Example />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/example" element={<Example/>} />
                 <Route path="/about" element={<About />} />
+                <Route path="/*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );
