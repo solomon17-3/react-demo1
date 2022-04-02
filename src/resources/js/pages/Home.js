@@ -32,6 +32,25 @@ function Home() {
     //定義したスタイルを利用するための設定
     const classes = useStyles();
 
+    let rows = [
+        {
+            name:"ユーザーA",
+            content:"洗濯",
+            editBtn: <Button color="secondary" variant="contained">編集</Button>,
+            deleteBtn: <Button color="primary" variant="contained">完了</Button>,
+        },{
+            name:"ユーザーB",
+            content:"掃除",
+            editBtn: <Button color="secondary" variant="contained">編集</Button>,
+            deleteBtn: <Button color="primary" variant="contained">完了</Button>,
+        },{
+            name:"ユーザーC",
+            content:"",
+            editBtn: <Button color="secondary" variant="contained">編集</Button>,
+            deleteBtn: <Button color="primary" variant="contained">完了</Button>,
+        },
+    ];
+
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -51,20 +70,18 @@ function Home() {
                                         </TableRow>
                                     </TableHead>
                                      {/* ボディ部分 */}
-                                    <TableBody>
-                                        <TableRow>
-                                            <TableCell align="center">ユーザーA</TableCell>
-                                            <TableCell align="center">洗濯</TableCell>
-                                            <TableCell align="center"><Button color="secondary" variant="contained">編集</Button></TableCell>
-                                            <TableCell align="center"><Button color="primary" variant="contained">完了</Button></TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell align="center">ユーザーB</TableCell>
-                                            <TableCell align="center">掃除</TableCell>
-                                            <TableCell align="center"><Button color="secondary" variant="contained">編集</Button></TableCell>
-                                            <TableCell align="center"><Button color="primary" variant="contained">完了</Button></TableCell>
-                                        </TableRow>
+                                     <TableBody>
+                                        { rows.map((row, i) => (
+                                            <TableRow key={i}>
+                                                {Object.keys(row).map((key, i) => {
+                                                    return(
+                                                        <TableCell align="center" key={i}>{row[key]}</TableCell>
+                                                    );
+                                                })}
+                                            </TableRow> 
+                                        ))}
                                     </TableBody>
+
                                 </Table>
                             </TableContainer>
                         </Card>
