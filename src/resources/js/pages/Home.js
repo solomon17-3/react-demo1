@@ -73,9 +73,9 @@ function Home() {
                                      <TableBody>
                                         { rows.map((row, i) => (
                                             <TableRow key={i}>
-                                                {Object.keys(row).map((key, i) => {
+                                                {Object.keys(row).map((key, j) => {
                                                     return(
-                                                        <TableCell align="center" key={i}>{row[key]}</TableCell>
+                                                        <TableCell align="center" key={j}>{row[key]}</TableCell>
                                                     );
                                                 })}
                                             </TableRow> 
