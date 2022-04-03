@@ -13,6 +13,6 @@ class PostController extends Controller
     {
         $posts = Post::all();
         //postの一覧をjson形式で返却する
-        return responce()->json($posts, 200);
+        return response()->json($posts, 200);
     }
 }
