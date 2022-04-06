@@ -55,45 +55,57 @@ function Home() {
             });
     }
 
-    return (
-        "a"
-        // <div className="container">
-        //     <div className="row justify-content-center">
-        //         <div className="col-md-10">
-        //             <div className="card">
-        //                 <h1>タスク管理</h1>
-        //                 <Card className={classes.card}>
-        //                     {/* テーブル部分の定義 */}
-        //                     <TableContainer component={Paper}>
-        //                         <Table className={classes.table} aria-label="simple table">
-        //                             {/* ヘッダー部分 */}
-        //                             <TableHead className={classes.tableHead}>
-        //                                 <TableRow>
-        //                                     {headerList.map((item, index) => (
-        //                                         <TableCell align="center" key={index}>{item}</TableCell>
-        //                                     ))}
-        //                                 </TableRow>
-        //                             </TableHead>
-        //                              {/* ボディ部分 */}
-        //                              <TableBody>
-        //                                 { rows.map((row, i) => (
-        //                                     <TableRow key={i}>
-        //                                         {Object.keys(row).map((key, j) => {
-        //                                             return(
-        //                                                 <TableCell align="center" key={j}>{row[key]}</TableCell>
-        //                                             );
-        //                                         })}
-        //                                     </TableRow> 
-        //                                 ))}
-        //                             </TableBody>
+    //取得した変数rowsを定義
+    let rows = [];
 
-        //                         </Table>
-        //                     </TableContainer>
-        //                 </Card>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
+    //rowsに値を格納
+    posts.map((post) => {
+        rows.push({
+            name: post.name,
+            content: post.content,
+            editBtn: <Button color="secondary" variant="contained">編集</Button>,
+            deleteBtn: <Button color="primary" variant="contained">完了</Button>,
+        })
+    })
+
+    return (
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-md-10">
+                    <div className="card">
+                        <h1>タスク管理</h1>
+                        <Card className={classes.card}>
+                            {/* テーブル部分の定義 */}
+                            <TableContainer component={Paper}>
+                                <Table className={classes.table} aria-label="simple table">
+                                    {/* ヘッダー部分 */}
+                                    <TableHead className={classes.tableHead}>
+                                        <TableRow>
+                                            {headerList.map((item, index) => (
+                                                <TableCell align="center" key={index}>{item}</TableCell>
+                                            ))}
+                                        </TableRow>
+                                    </TableHead>
+                                     {/* ボディ部分 */}
+                                     <TableBody>
+                                        { rows.map((row, i) => (
+                                            <TableRow key={i}>
+                                                {Object.keys(row).map((key, j) => {
+                                                    return(
+                                                        <TableCell align="center" key={j}>{row[key]}</TableCell>
+                                                    );
+                                                })}
+                                            </TableRow> 
+                                        ))}
+                                    </TableBody>
+
+                                </Table>
+                            </TableContainer>
+                        </Card>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
