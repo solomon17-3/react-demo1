@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import purple from '@material-ui/core/colors/purple';
 import axios from 'axios';
+import PostFrom from '../components/PostFrom';
 
 
 //スタイルの定義
@@ -74,6 +75,9 @@ function Home() {
                 <div className="col-md-10">
                     <div className="card">
                         <h1>タスク管理</h1>
+                        <Card className={classes.card}>
+                            <PostFrom />
+                        </Card>
                         <Card className={classes.card}>
                             {/* テーブル部分の定義 */}
                             <TableContainer component={Paper}>
