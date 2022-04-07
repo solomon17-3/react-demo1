@@ -14,8 +14,8 @@ function PostFrom(props){
 
     return (
       <form>
-          <TextField id="name" label="タスク名" variant="outlined" ClassName={classes.textArea} name="name" />
-          <TextField id="content" label="内容" variant="outlined" ClassName={classes.textArea} name="content" />
+          <TextField id="name" label="タスク名" variant="outlined" className={classes.textArea} name="name" />
+          <TextField id="content" label="内容" variant="outlined" className={classes.textArea} name="content" />
           <Button color="primary" variant="contained" href="/">登録</Button>
       </form>  
     );
