@@ -19930,7 +19930,6 @@ function PostFrom(props) {
       variant: "outlined",
       className: classes.textArea,
       name: "name",
-      value: data.name,
       onChange: inputChange
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["default"], {
       id: "content",
@@ -19938,7 +19937,6 @@ function PostFrom(props) {
       variant: "outlined",
       className: classes.textArea,
       name: "content",
-      value: data.content,
       onChange: inputChange
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["default"], {
       color: "primary",
