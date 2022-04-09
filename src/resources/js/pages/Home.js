@@ -25,6 +25,9 @@ function Home() {
     //postsの状態を管理
     const [posts, setPosts] = useState([]);
 
+    //入力データをセット
+    const [formData, setFormData] = useState({name:'', content:''});
+
     //画面に到着したらgetPostsDataを呼ぶ
     useEffect(() => {
         getPostsData();
@@ -40,6 +43,42 @@ function Home() {
             .catch(() => {
                 console.log('通信に失敗しました');
             });
+    }
+
+    //入力されたら(都度)入力値を変更するためのfunction
+    const inputChange = (event) => {
+        const key = event.target.name;
+        const value = event.target.value;
+        formData[key] = value;
+        let data = Object.assign({}, formData);
+        setFormData(data);
+    }
+
+    //postFormに入力された値をjson形式でpostする
+    const createPost = async() => {
+        //値が空だと弾く
+        if(formData == ''){
+            return;
+        }
+
+        //axios：非同期関数！→awaitを使う
+        await axios.post('api/post/create', {
+            name: formData.name,
+            content: formData.content
+        })
+        .then((res) => {
+            //戻り値をtodoリストにセット
+            const tempPosts = posts
+            tempPosts.push(res.data);
+            setPosts(tempPosts);
+
+            //入力内容をリセットする
+            setFormData('');
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     //取得した変数rowsを定義
@@ -62,7 +101,7 @@ function Home() {
                     <div className="card">
                         <h1>タスク管理</h1>
                         <Card className={classes.card}>
-                            <PostFrom />
+                            <PostFrom data={formData} inputChange={inputChange} btnFunc={createPost}/>
                         </Card>
                         <Card className={classes.card}>
                             {/* テーブル部分の定義 */}
