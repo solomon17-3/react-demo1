@@ -3,6 +3,7 @@ import { Card } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import PostFrom from '../components/PostFrom';
 import {useParams} from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => createStyles({
     card: {
@@ -31,8 +32,8 @@ function PostEdit(){
 
     const getEditData = () => {
         axios
-            .get('/api/edit', {
-                id: {id}
+            .post('/api/edit', {
+                id: id
             })
             .then(response => {
                 setEditData(response.data);
@@ -56,7 +57,7 @@ function PostEdit(){
                 <div className='col-md-10'>
                     <div className='card'>
                         <h1>編集画面</h1>
-                        <Card className="card">
+                        <Card className={classes.card}>
                             <PostFrom data={editData} inputChange={inputChange} btnFunc={editPost} btnName={btnName}/>
                         </Card>
                     </div>
