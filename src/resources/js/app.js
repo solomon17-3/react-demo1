@@ -19,15 +19,17 @@ import About from "./pages/About";
 import Example from "./pages/Example";
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
+import PostEdit from './pages/PostEdit';
 
 const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home/>} />
+                <Route path="/post/edit/:id" element={<PostEdit/>}/>
                 <Route path="/example" element={<Example/>} />
-                <Route path="/about" element={<About />} />
-                <Route path="/*" element={<NotFound />} />
+                <Route path="/about" element={<About/>} />
+                <Route path="/*" element={<NotFound/>} />
             </Routes>
         </BrowserRouter>
     );

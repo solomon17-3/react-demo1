@@ -28,6 +28,9 @@ function Home() {
     //入力データをセット
     const [formData, setFormData] = useState({name:'', content:''});
 
+    //新規登録ボタンのボタン名
+    const btnName = "登録";
+
     //画面に到着したらgetPostsDataを呼ぶ
     useEffect(() => {
         getPostsData();
@@ -89,7 +92,7 @@ function Home() {
         rows.push({
             name: post.name,
             content: post.content,
-            editBtn: <Button color="secondary" variant="contained">編集</Button>,
+            editBtn: <Button color="secondary" variant="contained" key={post.id} href={`/post/edit/${post.id}`}>編集</Button>,
             deleteBtn: <Button color="primary" variant="contained">完了</Button>,
         })
     })
@@ -101,7 +104,7 @@ function Home() {
                     <div className="card">
                         <h1>タスク管理</h1>
                         <Card className={classes.card}>
-                            <PostFrom data={formData} inputChange={inputChange} btnFunc={createPost}/>
+                            <PostFrom data={formData} inputChange={inputChange} btnFunc={createPost} btnName={btnName}/>
                         </Card>
                         <Card className={classes.card}>
                             {/* テーブル部分の定義 */}
