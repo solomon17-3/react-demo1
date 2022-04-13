@@ -33,9 +33,9 @@ class PostController extends Controller
     }
 
     //データを更新するためのアクション
-    public function update()
+    public function update(Request $request)
     {
-        $post = Post::find($request->$id);
+        $post = Post::find($request->id);
         $post->name = $request->name;
         $post->content = $request->content;
         $post->save();

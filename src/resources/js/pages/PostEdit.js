@@ -43,12 +43,32 @@ function PostEdit(){
             });
     }
 
-    const inputChange = () => {
+    const inputChange = (event) => {
+        const key = event.target.name;
+        const value = event.target.value;
+        editData[key] = value;
+        let data = Object.assign({}, editData);
+        setEditData(data);
 
     }
 
-    const editPost = () => {
+    const editPost = async() => {
 
+        if(editData == ''){
+            return;
+        }
+
+        await axios.post('/api/update', {
+            id: id,
+            name: editData.name,
+            content: editData.content
+        })
+        .then(() => {
+            console.log('更新が完了しました');
+        })
+        .catch(() => {
+            console.log('更新に失敗しました');
+        });
     }
 
     return(
