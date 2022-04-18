@@ -45,7 +45,8 @@ class PostController extends Controller
     }
     //データを削除するためのアクション
     public function delete(Request $request){
-        Post::destroy($request->id);
+        $post = Post::find($request->id);
+        $post->delete();
         $posts = Post::all();
         return $posts;
 

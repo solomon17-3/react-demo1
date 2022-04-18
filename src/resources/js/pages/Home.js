@@ -84,6 +84,21 @@ function Home() {
         });
     }
 
+    //要素を削除する関数
+    const deletePost = async(delId) => {
+        await axios.post('api/post/delete',{
+            id: delId
+        })
+        .then((res) => {
+            this.setState({
+                posts: res.psots
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
     //取得した変数rowsを定義
     let rows = [];
 
@@ -93,7 +108,7 @@ function Home() {
             name: post.name,
             content: post.content,
             editBtn: <Button color="secondary" variant="contained" key={post.id} href={`/post/edit/${post.id}`}>編集</Button>,
-            deleteBtn: <Button color="primary" variant="contained">完了</Button>,
+            deleteBtn: <Button color="primary" variant="contained" href="/" onClick={()=>deletePost(post.id)}>完了</Button>,
         })
     })
 
